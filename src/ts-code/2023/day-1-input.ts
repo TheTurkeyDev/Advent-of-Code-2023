@@ -1,1 +1,1 @@
-export const day1Input = '';
+export const input = '';

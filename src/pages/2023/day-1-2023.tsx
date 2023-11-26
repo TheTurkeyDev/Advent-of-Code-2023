@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { DayBase } from './day-base';
+import { DayBase } from '../day-base';
 import { Body1 } from 'gobble-lib-react';
 
 export const Day1 = () => {

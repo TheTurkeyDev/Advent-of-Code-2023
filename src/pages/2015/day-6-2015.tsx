@@ -154,10 +154,10 @@ export const Day6 = () => {
                     <InputsWrapper>
                         <ToggleSwitch label='Part 1' checked={part1} onClick={() => setPart1(!part1)} />
                     </InputsWrapper>
-                    <AnswersCard
+                    {/* <AnswersCard
                         part1={lights1.reduce((sum, line) => sum + line.reduce((lineSum, l) => lineSum + (l ? 1 : 0), 0), 0)}
                         part2={lights2.reduce((sum, line) => sum + line.reduce((lineSum, l) => lineSum + l, 0), 0)}
-                    />
+                    /> */}
                 </TopRow>
                 <LightsDisplayWrapper ref={canvasRef} width={1000} height={1000} />
                 <input type='range' min='0' max={input.split('\n').length} value={step} onChange={e => setStep(parseInt(e.target.value))} />

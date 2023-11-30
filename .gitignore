@@ -2,3 +2,4 @@ node_modules/
 dist/*
 logo.xcf
 dist/index.html
+src/ts-code/*/*-input.ts

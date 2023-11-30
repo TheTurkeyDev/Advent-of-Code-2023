@@ -3,6 +3,7 @@ import { DayBase } from '../day-base';
 import styled from 'styled-components';
 import { Body1, Card, CardContent, CardHeader, Headline4, InputsWrapper, ToggleSwitch } from 'gobble-lib-react';
 import { AnswerHighlightBody1 } from '../../styling/text-styles';
+import { AnswersCard } from '../../components/answers-card';
 
 const ContentWrapper = styled.div`
     display: grid;
@@ -13,11 +14,6 @@ const ContentWrapper = styled.div`
 const LightsDisplayWrapper = styled.canvas`
     background-color: black;
     height: 100%;
-`;
-
-const CustomCardContent = styled(CardContent)`
-    display: grid;
-    grid-template-columns: 1fr;
 `;
 
 const TopRow = styled.div`
@@ -32,6 +28,12 @@ export const Day6 = () => {
     const [part1, setPart1] = useState(true);
     const [lights1, setLights1] = useState<readonly (readonly boolean[])[]>(new Array(1000).fill(false).map(() => new Array(1000).fill(false)));
     const [lights2, setLights2] = useState<readonly (readonly number[])[]>(new Array(1000).fill(false).map(() => new Array(1000).fill(false)));
+
+    useEffect(() => {
+        if (input === '')
+            return;
+        setStep(input.split('\n').length);
+    }, [input]);
 
     useEffect(() => {
         if (input === '')
@@ -152,21 +154,14 @@ export const Day6 = () => {
                     <InputsWrapper>
                         <ToggleSwitch label='Part 1' checked={part1} onClick={() => setPart1(!part1)} />
                     </InputsWrapper>
-                    <Card>
-                        <CardHeader>
-                            <Headline4>
-                                Answers
-                            </Headline4>
-                        </CardHeader>
-                        <CustomCardContent>
-                            <Body1>Part 1: <AnswerHighlightBody1>{lights1.reduce((sum, line) => sum + line.reduce((lineSum, l) => lineSum + (l ? 1 : 0), 0), 0)}</AnswerHighlightBody1></Body1>
-                            <Body1>Part 2: <AnswerHighlightBody1>{lights2.reduce((sum, line) => sum + line.reduce((lineSum, l) => lineSum + l, 0), 0)}</AnswerHighlightBody1></Body1>
-                        </CustomCardContent>
-                    </Card>
+                    <AnswersCard
+                        part1={lights1.reduce((sum, line) => sum + line.reduce((lineSum, l) => lineSum + (l ? 1 : 0), 0), 0)}
+                        part2={lights2.reduce((sum, line) => sum + line.reduce((lineSum, l) => lineSum + l, 0), 0)}
+                    />
                 </TopRow>
                 <LightsDisplayWrapper ref={canvasRef} width={1000} height={1000} />
                 <input type='range' min='0' max={input.split('\n').length} value={step} onChange={e => setStep(parseInt(e.target.value))} />
             </ContentWrapper>
-        </DayBase>
+        </DayBase >
     );
 };

@@ -10,7 +10,7 @@ export const TopNav = () => {
 
     return (
         <NavBar>
-            <SiteName to='/'>AOC 2023</SiteName>
+            <SiteName to='/'>Advent of Code</SiteName>
             <CenterContent>
                 <NavLink link='/'>Home</NavLink>
                 <Dropdown>

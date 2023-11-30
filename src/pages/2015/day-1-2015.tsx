@@ -3,6 +3,7 @@ import { DayBase } from '../day-base';
 import styled from 'styled-components';
 import { Body1, Card, CardContent, CardHeader, Headline3 } from 'gobble-lib-react';
 import { AnswerHighlightBody1 } from '../../styling/text-styles';
+import { AnswersCard } from '../../components/answers-card';
 
 const InstructionsScrollWrapper = styled.div`
     width: 98vw;
@@ -93,15 +94,10 @@ export const Day1 = () => {
                         ))}
                     </Instructions>
                 </InstructionsScrollWrapper>
-                <Card>
-                    <CardHeader>
-                        <Headline3>Answers</Headline3>
-                    </CardHeader>
-                    <AnswerCardContent>
-                        <Body1>Part 1: <AnswerHighlightBody1>{instructions[instructions.length - 1]?.currFloor ?? 'N/A'}</AnswerHighlightBody1></Body1>
-                        <Body1>Part 2: <AnswerHighlightBody1>{instructions[firstBasementIndex]?.instructionNum ?? 'N/A'}</AnswerHighlightBody1></Body1>
-                    </AnswerCardContent>
-                </Card>
+                <AnswersCard
+                    part1={instructions[instructions.length - 1]?.currFloor ?? 'N/A'}
+                    part2={instructions[firstBasementIndex]?.instructionNum ?? 'N/A'}
+                />
             </>
         </DayBase>
     );

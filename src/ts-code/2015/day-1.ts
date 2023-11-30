@@ -1,4 +1,4 @@
-import { input } from './day-1-2015-input';
+import { input } from './day-1-input';
 
 const finalFloor = input.split('').reduce((floor, next) => floor + (next === ')' ? -1 : 1), 0);
 console.log(finalFloor);

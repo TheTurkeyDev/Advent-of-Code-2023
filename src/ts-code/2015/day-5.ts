@@ -1,4 +1,4 @@
-import { input } from './day-5-2015-input';
+import { input } from './day-5-input';
 
 const part1 = input.split('\n').filter(i => {
     if (!i.match(/([aeiou].*){3,}/g))

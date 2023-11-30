@@ -1,4 +1,4 @@
-import { input } from './day-2-2015-input';
+import { input } from './day-2-input';
 
 
 const needed = input.split('\n').map((dimStr) => {

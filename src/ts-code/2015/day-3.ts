@@ -1,4 +1,4 @@
-import { input } from './day-3-2015-input';
+import { input } from './day-3-input';
 
 type Location = {
     readonly x: number,

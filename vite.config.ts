@@ -10,10 +10,6 @@ export default defineConfig({
                 target: 'http://localhost:8080',
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
-            '/aoc': {
-                target: 'http://localhost:8082',
-                rewrite: (path) => path.replace(/^\/aoc/, ''),
-            },
         }
     }
 });

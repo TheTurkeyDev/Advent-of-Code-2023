@@ -9,7 +9,7 @@ const router = (
     <ThemeContextProvider>
         <GlobalStyles />
         <Toast>
-            <Router>
+            <Router basename={'/aoc'}>
                 <PageWrapper>
                     <AocRouter />
                 </PageWrapper>

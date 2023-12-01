@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { DayBase } from '../day-base';
 import styled from 'styled-components';
-import { Body1, Card, CardContent, CardHeader, Headline3 } from 'gobble-lib-react';
+import { Body1, CardContent } from 'gobble-lib-react';
 import { AnswerHighlightBody1 } from '../../styling/text-styles';
-import { AnswersCard } from '../../components/answers-card';
 
 const InstructionsScrollWrapper = styled.div`
     width: 98vw;
@@ -94,10 +93,6 @@ export const Day1 = () => {
                         ))}
                     </Instructions>
                 </InstructionsScrollWrapper>
-                <AnswersCard
-                    part1={instructions[instructions.length - 1]?.currFloor ?? 'N/A'}
-                    part2={instructions[firstBasementIndex]?.instructionNum ?? 'N/A'}
-                />
             </>
         </DayBase>
     );

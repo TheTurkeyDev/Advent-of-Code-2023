@@ -1,9 +1,7 @@
 import { createRef, useEffect, useState } from 'react';
 import { DayBase } from '../day-base';
 import styled from 'styled-components';
-import { Body1, Card, CardContent, CardHeader, Headline4, InputsWrapper, ToggleSwitch } from 'gobble-lib-react';
-import { AnswerHighlightBody1 } from '../../styling/text-styles';
-import { AnswersCard } from '../../components/answers-card';
+import { InputsWrapper, ToggleSwitch } from 'gobble-lib-react';
 
 const ContentWrapper = styled.div`
     display: grid;

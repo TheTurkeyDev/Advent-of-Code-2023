@@ -20,9 +20,33 @@ const isInBounds = (pos: readonly number[]) => pos[1] >= 0 && pos[1] < map.lengt
 const posToInt = (pos: readonly number[]) => (pos[1] * map[0].length) + pos[0];
 
 const startingPos = getStartingPos();
-//TODO Not hard code?
+
+const doFirstMove = () => {
+    const left = [startingPos[0] - 1, startingPos[1]];
+    const isLeft = '-FL'.includes(map[left[1]][left[0]]);
+    const right = [startingPos[0] + 1, startingPos[1] + 1];
+    const isRight = '-7J'.includes(map[right[1]][right[0]]);
+    const down = [startingPos[0], startingPos[1] + 1];
+    const isDown = '|JL'.includes(map[down[1]][down[0]]);
+    const up = [startingPos[0], startingPos[1] - 1];
+    const isUp = '|F7'.includes(map[up[1]][up[0]]);
+    if (isRight && isLeft)
+        return [right, left];
+    if (isUp && isDown)
+        return [up, down];
+    if (isRight && isDown)
+        return [right, down];
+    if (isLeft && isUp)
+        return [left, up];
+    if (isLeft && isDown)
+        return [left, down];
+    if (isRight && isUp)
+        return [right, up];
+    return [startingPos, startingPos];
+};
+
+let positions = doFirstMove();
 let lastPositions = [startingPos, startingPos];
-let positions = [[startingPos[0], startingPos[1] + 1], [startingPos[0] - 1, startingPos[1]]];
 let moves = 1;
 
 const getConnecting = (pos: readonly number[], lastPos: readonly number[]) => {

@@ -132,7 +132,6 @@ export const Day10 = () => {
             return [startingPos, startingPos];
         };
 
-        //TODO Not hard code?
         // eslint-disable-next-line functional/no-let
         let lastPositions = [startingPos, startingPos];
         // eslint-disable-next-line functional/no-let

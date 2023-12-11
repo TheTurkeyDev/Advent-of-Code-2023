@@ -98,7 +98,7 @@ export const Day10 = () => {
         const doFirstMove = () => {
             const left = [startingPos[0] - 1, startingPos[1]];
             const isLeft = '-FL'.includes(mapVar[left[1]][left[0]]);
-            const right = [startingPos[0] + 1, startingPos[1] + 1];
+            const right = [startingPos[0] + 1, startingPos[1]];
             const isRight = '-7J'.includes(mapVar[right[1]][right[0]]);
             const down = [startingPos[0], startingPos[1] + 1];
             const isDown = '|JL'.includes(mapVar[down[1]][down[0]]);

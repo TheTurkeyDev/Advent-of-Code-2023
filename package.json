@@ -7,7 +7,7 @@
   "scripts": {
     "start": "vite serve",
     "build": "vite build",
-    "run-day": "nodemon --experimental-specifier-resolution=node src/ts-code/2023/day-14.ts",
+    "run-day": "nodemon --experimental-specifier-resolution=node src/ts-code/2023/day-15.ts",
     "lint": "eslint ./src/**/*.{js,jsx} --quiet",
     "lint-fix": "eslint --fix ./src/**/*.{js,jsx}"
   },

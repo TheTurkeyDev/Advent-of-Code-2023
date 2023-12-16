@@ -19,6 +19,7 @@ export const TopNav = () => {
                         <NavLink link='/2023/1'>Day 1</NavLink>
                         <NavLink link='/2023/10'>Day 10</NavLink>
                         <NavLink link='/2023/13'>Day 13</NavLink>
+                        <NavLink link='/2023/15'>Day 15</NavLink>
                     </DropdownContent>
                 </Dropdown>
                 <Dropdown>

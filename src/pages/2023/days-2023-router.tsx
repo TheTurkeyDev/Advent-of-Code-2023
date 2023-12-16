@@ -4,6 +4,7 @@ import { Loading } from 'gobble-lib-react';
 import { Day1 } from './day-1-2023';
 import { Day10 } from './day-10-2023';
 import { Day13 } from './day-13-2023';
+import { Day15 } from './day-15-2023';
 
 const Days2023Router = () => {
     return (
@@ -12,6 +13,7 @@ const Days2023Router = () => {
                 <Route path='/1' element={<Day1 />} />
                 <Route path='/10' element={<Day10 />} />
                 <Route path='/13' element={<Day13 />} />
+                <Route path='/15' element={<Day15 />} />
             </Routes>
         </Suspense>
     );

@@ -77,8 +77,15 @@ const getModules = () => {
     return modules;
 };
 
-let rxGetLow = false;
+let presses = 0;
+const moduleFeeder: { [key: string]: number } = {
+    dh: 0,
+    sg: 0,
+    lm: 0,
+    db: 0,
+};
 const sendPulseTo = (modules: Modules, mn: string, from: string, h: boolean): number[] => {
+
     let pulses = [0, 0];
     const modulesToRun: { moduleName: string, from: string, high: boolean }[] = [{
         moduleName: mn,
@@ -89,21 +96,21 @@ const sendPulseTo = (modules: Modules, mn: string, from: string, h: boolean): nu
         const toRun = modulesToRun.shift();
         if (!toRun)
             continue;
-        if (toRun.moduleName === 'rx' && !toRun.high)
-            rxGetLow = true;
+
+        if (Object.keys(moduleFeeder).includes(toRun.from) && moduleFeeder[toRun.from] === 0 && toRun.high)
+            moduleFeeder[toRun.from] = presses + 1;
+
         const module = modules[toRun.moduleName];
 
         if (!module)
             continue;
 
         if (module.type === 'b') {
-            module.dest.forEach(dest => {
-                modulesToRun.push({
-                    moduleName: dest,
-                    from: toRun.moduleName,
-                    high: toRun.high
-                });
-            });
+            modulesToRun.push(...module.dest.map(dest => ({
+                moduleName: dest,
+                from: toRun.moduleName,
+                high: toRun.high
+            })));
             pulses[0] += !toRun.high ? module.dest.length : 0;
             pulses[1] += toRun.high ? module.dest.length : 0;
         }
@@ -111,13 +118,11 @@ const sendPulseTo = (modules: Modules, mn: string, from: string, h: boolean): nu
             if (!toRun.high) {
                 const ffm = (module as FlipFlopModule);
                 ffm.isHigh = !ffm.isHigh;
-                module.dest.forEach(dest => {
-                    modulesToRun.push({
-                        moduleName: dest,
-                        from: toRun.moduleName,
-                        high: ffm.isHigh
-                    });
-                });
+                modulesToRun.push(...module.dest.map(dest => ({
+                    moduleName: dest,
+                    from: toRun.moduleName,
+                    high: ffm.isHigh
+                })));
                 pulses[0] += !ffm.isHigh ? module.dest.length : 0;
                 pulses[1] += ffm.isHigh ? module.dest.length : 0;
             }
@@ -126,13 +131,11 @@ const sendPulseTo = (modules: Modules, mn: string, from: string, h: boolean): nu
             const cm = (module as ConjunctionModule);
             cm.isHigh[toRun.from] = toRun.high;
             const sendHigh = Object.keys(cm.isHigh).filter(k => !cm.isHigh[k]).length !== 0;
-            module.dest.forEach(dest => {
-                modulesToRun.push({
-                    moduleName: dest,
-                    from: toRun.moduleName,
-                    high: sendHigh
-                });
-            });
+            modulesToRun.push(...module.dest.map(dest => ({
+                moduleName: dest,
+                from: toRun.moduleName,
+                high: sendHigh
+            })));
             pulses[0] += !sendHigh ? module.dest.length : 0;
             pulses[1] += sendHigh ? module.dest.length : 0;
         }
@@ -148,14 +151,14 @@ const part1 = Array.from({ length: 1000 }).map(_ => 0).reduce((pulses) => {
 
 console.log(`Part 1: ${part1[0] * part1[1]}`);
 
-let presses = 0;
-rxGetLow = false;
+const gcd = (x: number, y: number): number => (!y ? x : gcd(y, x % y));
+const lcm = (arr: number[]) => arr.reduce((x, y) => (x * y) / gcd(x, y));
+
 const part2Modules = getModules();
-while (!rxGetLow) {
+
+while (Object.keys(moduleFeeder).filter(k => moduleFeeder[k] === 0).length !== 0) {
     sendPulseTo(part2Modules, 'broadcaster', 'button', false);
     presses++;
-    if (presses % 1000000 === 0)
-        console.log(presses);
 }
 
-console.log(`Part 2: ${presses}`);
+console.log(`Part 2: ${lcm(Object.keys(moduleFeeder).map(k => moduleFeeder[k]))}`);

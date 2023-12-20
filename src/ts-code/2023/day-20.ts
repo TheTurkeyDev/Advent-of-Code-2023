@@ -78,40 +78,66 @@ const getModules = () => {
 };
 
 let rxGetLow = false;
-const sendPulseTo = (modules: Modules, moduleName: string, from: string, high: boolean): number[] => {
-    if (moduleName === 'rx' && !high)
-        rxGetLow = true;
-    const module = modules[moduleName];
+const sendPulseTo = (modules: Modules, mn: string, from: string, h: boolean): number[] => {
+    let pulses = [0, 0];
+    const modulesToRun: { moduleName: string, from: string, high: boolean }[] = [{
+        moduleName: mn,
+        from,
+        high: h
+    }];
+    while (modulesToRun.length > 0) {
+        const toRun = modulesToRun.shift();
+        if (!toRun)
+            continue;
+        if (toRun.moduleName === 'rx' && !toRun.high)
+            rxGetLow = true;
+        const module = modules[toRun.moduleName];
 
-    if (!module)
-        return [0, 0];
+        if (!module)
+            continue;
 
-    if (module.type === 'b') {
-        return module.dest.reduce((sum, dest) => {
-            const pulsesSent = sendPulseTo(modules, dest, moduleName, high);
-            return [sum[0] + pulsesSent[0], sum[1] + pulsesSent[1]];
-        }, [!high ? module.dest.length : 0, high ? module.dest.length : 0]);
-    }
-    else if (module.type === '%') {
-        if (!high) {
-            const ffm = (module as FlipFlopModule);
-            ffm.isHigh = !ffm.isHigh;
-            return module.dest.reduce((sum, dest) => {
-                const pulsesSent = sendPulseTo(modules, dest, moduleName, ffm.isHigh);
-                return [sum[0] + pulsesSent[0], sum[1] + pulsesSent[1]];
-            }, [!ffm.isHigh ? module.dest.length : 0, ffm.isHigh ? module.dest.length : 0]);
+        if (module.type === 'b') {
+            module.dest.forEach(dest => {
+                modulesToRun.push({
+                    moduleName: dest,
+                    from: toRun.moduleName,
+                    high: toRun.high
+                });
+            });
+            pulses[0] += !toRun.high ? module.dest.length : 0;
+            pulses[1] += toRun.high ? module.dest.length : 0;
+        }
+        else if (module.type === '%') {
+            if (!toRun.high) {
+                const ffm = (module as FlipFlopModule);
+                ffm.isHigh = !ffm.isHigh;
+                module.dest.forEach(dest => {
+                    modulesToRun.push({
+                        moduleName: dest,
+                        from: toRun.moduleName,
+                        high: ffm.isHigh
+                    });
+                });
+                pulses[0] += !ffm.isHigh ? module.dest.length : 0;
+                pulses[1] += ffm.isHigh ? module.dest.length : 0;
+            }
+        }
+        else if (module.type === '&') {
+            const cm = (module as ConjunctionModule);
+            cm.isHigh[toRun.from] = toRun.high;
+            const sendHigh = Object.keys(cm.isHigh).filter(k => !cm.isHigh[k]).length !== 0;
+            module.dest.forEach(dest => {
+                modulesToRun.push({
+                    moduleName: dest,
+                    from: toRun.moduleName,
+                    high: sendHigh
+                });
+            });
+            pulses[0] += !sendHigh ? module.dest.length : 0;
+            pulses[1] += sendHigh ? module.dest.length : 0;
         }
     }
-    else if (module.type === '&') {
-        const cm = (module as ConjunctionModule);
-        cm.isHigh[from] = high;
-        const sendHigh = Object.keys(cm.isHigh).filter(k => !cm.isHigh[k]).length !== 0;
-        return module.dest.reduce((sum, dest) => {
-            const pulsesSent = sendPulseTo(modules, dest, moduleName, sendHigh);
-            return [sum[0] + pulsesSent[0], sum[1] + pulsesSent[1]];
-        }, [!sendHigh ? module.dest.length : 0, sendHigh ? module.dest.length : 0]);
-    }
-    return [0, 0];
+    return pulses;
 };
 
 const part1Modules = getModules();

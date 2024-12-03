@@ -6,7 +6,7 @@ const partAnswers = input.split('\n').reduce((answers, l) => {
         if (c === 'm' || c === 'd') {
             const part = l.substring(i, l.indexOf(')', i) + 1);
             if (!!part.match(/^mul\(\d+,\d+\)$/)) {
-                const product = part.substring(4, part.length - 1).split(',').map(n => parseInt(n)).reduce((prod, c) => prod * c, 1);
+                const product = part.substring(4, part.length - 1).split(',').reduce((prod, c) => prod * parseInt(c), 1);
                 return [prod[0] + product, prod[1] + (!!prod[2] ? 0 : product), prod[2]];
             }
             else if (!!part.match(/^do\(\)$/)) {

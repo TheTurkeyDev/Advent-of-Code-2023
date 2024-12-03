@@ -9,4 +9,3 @@ console.log(`Part 1: ${answer}`);
 const encoded = orig.map(l => `"${l.replaceAll(/\\/g, '\\\\').replaceAll(/"/g, '\\"')}"`);
 const answer2 = encoded.reduce((prev, l, i) => prev + (l.length - orig[i].length), 0);
 console.log(`Part 2: ${answer2}`);
-//1485 Low

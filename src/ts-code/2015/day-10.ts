@@ -5,8 +5,9 @@ type Entry = {
     readonly num: number
 }
 
+// There's some sort of pattern that can be used to make this run like a million times faster, but I can't think of it yet
 const getAnswer = (passes: number) => {
-    return Array.from({ length: passes }, (_, i) => i).reduce((val, i) => {
+    return Array.from({ length: passes }, (_, i) => i).reduce(val => {
         return val.split('')
             .reduce((countArr, char) => {
                 const num = parseInt(char);

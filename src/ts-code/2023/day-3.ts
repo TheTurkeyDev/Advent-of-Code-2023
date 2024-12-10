@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-3-input';
+import { input } from './inputs/day-3';
 
 // eslint-disable-next-line functional/prefer-readonly-type
 const numIndex: { lineIndx: number, startIndex: number }[] = [];

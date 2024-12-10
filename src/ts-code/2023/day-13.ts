@@ -1,4 +1,4 @@
-import { input } from './day-13-input';
+import { input } from './inputs/day-13';
 
 const doesReflectColumn = (grid: readonly (readonly string[])[], left: number, right: number) => {
     if (right >= grid[0].length)

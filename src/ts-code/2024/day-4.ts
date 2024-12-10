@@ -1,4 +1,4 @@
-import { input } from './day-4-input';
+import { input } from './inputs/day-4';
 
 const lines = input.split('\n');
 const height = lines.length;

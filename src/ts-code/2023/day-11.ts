@@ -1,6 +1,6 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-let */
-import { input } from './day-11-input';
+import { input } from './inputs/day-11';
 
 const map = input.split('\n').map(l => l.split(''));
 const emptyRows = [] as number[];

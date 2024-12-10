@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-6-input';
+import { input } from './inputs/day-6';
 
 const lights = new Array(1000).fill(false).map(() => new Array(1000).fill(false));
 

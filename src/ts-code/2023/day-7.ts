@@ -1,4 +1,4 @@
-import { input } from './day-7-input';
+import { input } from './inputs/day-7';
 
 type CardValues = { readonly [key: string]: number }
 const part1CardValues: CardValues = {

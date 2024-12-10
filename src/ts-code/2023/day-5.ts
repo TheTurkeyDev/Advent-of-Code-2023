@@ -1,6 +1,6 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-let */
-import { input } from './day-5-input';
+import { input } from './inputs/day-5';
 
 const lines = input.split('\n');
 let values = lines[0].substring(7).split(' ').map(v => parseInt(v, 10));

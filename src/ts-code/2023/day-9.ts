@@ -1,5 +1,5 @@
 /* eslint-disable functional/prefer-readonly-type */
-import { input } from './day-9-input';
+import { input } from './inputs/day-9';
 
 const parts = input.split('\n')
     .map(l => {

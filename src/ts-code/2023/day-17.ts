@@ -1,6 +1,6 @@
 /* eslint-disable functional/no-let */
 /* eslint-disable functional/prefer-readonly-type */
-import { input } from './day-17-input';
+import { input } from './inputs/day-17';
 
 type Position = {
     x: number

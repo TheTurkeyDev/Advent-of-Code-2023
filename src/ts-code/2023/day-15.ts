@@ -1,5 +1,5 @@
 /* eslint-disable functional/prefer-readonly-type */
-import { input } from './day-15-input';
+import { input } from './inputs/day-15';
 
 const getHash = (str: string) => str.split('').map(c => c.charCodeAt(0)).reduce((sum, c) => ((sum + c) * 17) % 256, 0);
 

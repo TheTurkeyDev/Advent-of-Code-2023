@@ -1,4 +1,4 @@
-import { input } from './day-7-input';
+import { input } from './inputs/day-7';
 
 const solvePart = (operands: readonly string[]) => {
     return input.split('\n').reduce((partAnswer, s) => {

@@ -1,5 +1,5 @@
 /* eslint-disable functional/prefer-readonly-type */
-import { input } from './day-23-input';
+import { input } from './inputs/day-23';
 
 // const test = `#.#####################
 // #.......#########...###

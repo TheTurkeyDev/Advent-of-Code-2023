@@ -1,4 +1,4 @@
-import { input } from './day-2-input';
+import { input } from './inputs/day-2';
 
 const part1 = input.split('\n').reduce((sum, line) => {
     const colonIndx = line.indexOf(':');

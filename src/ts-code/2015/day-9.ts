@@ -1,4 +1,4 @@
-import { input } from './day-9-input';
+import { input } from './inputs/day-9';
 
 type SrcDest = {
     readonly [src: string]: readonly { readonly dest: string, readonly dist: number }[]

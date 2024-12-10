@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-4-input';
+import { input } from './inputs/day-4';
 
 const winners = input.replaceAll('  ', ' ').split('\n').map(line => {
     const parts = line.split(':');

@@ -1,4 +1,4 @@
-import { input } from './day-5-input';
+import { input } from './inputs/day-5';
 
 type Rules = {
     readonly [key: number]: {

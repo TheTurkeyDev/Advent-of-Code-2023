@@ -1,6 +1,6 @@
 /* eslint-disable functional/no-let */
 /* eslint-disable functional/prefer-readonly-type */
-import { input } from './day-14-input';
+import { input } from './inputs/day-14';
 
 const tiltNorth = (grid: string[][]): string[][] => {
     return grid.map((row, y) => {

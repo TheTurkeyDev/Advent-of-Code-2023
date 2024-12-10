@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-24-input';
+import { input } from './inputs/day-24';
 
 const lines = input.split('\n').map(l => {
     const parts = l.replaceAll(' ', '').split('@');

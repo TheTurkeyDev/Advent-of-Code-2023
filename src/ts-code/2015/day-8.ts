@@ -1,4 +1,4 @@
-import { input } from './day-8-input';
+import { input } from './inputs/day-8';
 
 const orig = input.split('\n');
 const x = orig.map(l => l.substring(1, l.length - 1).replaceAll(/\\x[0-9a-f]{2}/g, '1').replaceAll(/\\"/g, '"').replaceAll(/\\\\/g, '\\'));

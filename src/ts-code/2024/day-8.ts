@@ -1,4 +1,4 @@
-import { input } from './day-8-input';
+import { input } from './inputs/day-8';
 
 type Point = {
     readonly row: number

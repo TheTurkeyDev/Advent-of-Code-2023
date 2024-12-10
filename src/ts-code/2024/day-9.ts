@@ -1,4 +1,4 @@
-import { input } from './day-9-input';
+import { input } from './inputs/day-9';
 
 const map = input;
 const blocksOrig = map.split('').reduce((info, c) => {

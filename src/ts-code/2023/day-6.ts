@@ -1,4 +1,4 @@
-import { input } from './day-6-input';
+import { input } from './inputs/day-6';
 
 const lines = input.split('\n');
 const times = lines[0].substring(5).trim().split(' ').map(t => parseInt(t, 10));

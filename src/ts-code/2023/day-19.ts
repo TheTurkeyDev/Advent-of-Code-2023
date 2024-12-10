@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-19-input';
+import { input } from './inputs/day-19';
 
 const inputsSections = input.split('\n\n');
 

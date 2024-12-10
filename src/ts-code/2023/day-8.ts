@@ -1,6 +1,6 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-let */
-import { input } from './day-8-input';
+import { input } from './inputs/day-8';
 
 type Node = {
     readonly [key: string]: {

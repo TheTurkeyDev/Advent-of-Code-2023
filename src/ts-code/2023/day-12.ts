@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-12-input';
+import { input } from './inputs/day-12';
 
 const testStringValidity = (template: string, test: string) => (
     test.split('').filter((c, i) => !(template.charAt(i) === c || template.charAt(i) === '?')).length === 0

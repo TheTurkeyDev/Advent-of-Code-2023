@@ -1,4 +1,4 @@
-import { input } from './day-1-input';
+import { input } from './inputs/day-1';
 
 const parsed = input
     .split('\n')

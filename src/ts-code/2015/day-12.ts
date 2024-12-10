@@ -1,4 +1,4 @@
-import { input } from './day-12-input';
+import { input } from './inputs/day-12';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getValue = (elem: any, ignoreRed: boolean): number => {

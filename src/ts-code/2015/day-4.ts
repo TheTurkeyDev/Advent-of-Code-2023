@@ -1,4 +1,4 @@
-import { input } from './day-4-input';
+import { input } from './inputs/day-4';
 import * as crypto from 'crypto';
 
 const getHashNum = (start: string) => {

@@ -1,4 +1,4 @@
-import { input } from './day-7-input';
+import { input } from './inputs/day-7';
 
 type LogicMap = {
     // eslint-disable-next-line functional/prefer-readonly-type

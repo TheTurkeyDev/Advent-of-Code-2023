@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let */
-import { input } from './day-1-input';
+import { input } from './inputs/day-1';
 
 const part1 = input.split('\n').map(l => {
     const matches = [...l.matchAll(/\d/g)];

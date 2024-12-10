@@ -1,4 +1,4 @@
-import { input } from './day-11-input';
+import { input } from './inputs/day-11';
 
 const nextPass = (pass: string): string => {
     const char = pass.charCodeAt(pass.length - 1);

@@ -1,6 +1,6 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable functional/no-let */
-import { input } from './day-21-input';
+import { input } from './inputs/day-21';
 
 const test = `...........
 .....###.#.

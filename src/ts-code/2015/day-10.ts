@@ -1,4 +1,4 @@
-import { input } from './day-10-input';
+import { input } from './inputs/day-10';
 
 type Entry = {
     readonly count: number

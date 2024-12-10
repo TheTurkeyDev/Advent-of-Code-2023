@@ -1,4 +1,4 @@
-import { input } from './day-18-input';
+import { input } from './inputs/day-18';
 
 const instructions = input.split('\n').map(l => l.split(' '));
 

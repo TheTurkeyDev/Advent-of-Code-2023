@@ -5,6 +5,7 @@ import { HomePage } from './pages/home';
 
 const Days2015 = lazy(() => import(/* webpackChunkName: "Days 2015" */ './pages/2015/days-2015-router'));
 const Days2023 = lazy(() => import(/* webpackChunkName: "Days 2023" */ './pages/2023/days-2023-router'));
+const Days2024 = lazy(() => import(/* webpackChunkName: "Days 2024" */ './pages/2024/days-2024-router'));
 
 export const AocRouter = () => {
     return (
@@ -13,6 +14,7 @@ export const AocRouter = () => {
                 <Route path='/' element={<HomePage />} />
                 <Route path='/2015/*' element={<Days2015 />} />
                 <Route path='/2023/*' element={<Days2023 />} />
+                <Route path='/2024/*' element={<Days2024 />} />
                 <Route path='/*' element={<NotFound />} />
             </Routes>
         </Suspense>
